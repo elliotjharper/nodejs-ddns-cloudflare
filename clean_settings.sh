@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set the source and destination paths
-SOURCE_PATH="/src/settings.js.clean"
-DESTINATION_PATH="/src/settings.js"
+SOURCE_PATH="./src/settings.js.clean"
 
 # Check if the file exists
 if [ ! -f "$SOURCE_PATH" ]; then
-  echo "Clean settings do not exist. Erroring!"
-  exit 1
+  # Clean settings do not exist. Erroring!
+  exit 69
 fi
 
-cp "$SOURCE_PATH" "$DESTINATION_PATH"
+cat "$SOURCE_PATH"
