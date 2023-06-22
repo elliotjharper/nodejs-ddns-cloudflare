@@ -47,9 +47,11 @@ export async function updateCloudflareDnsEntry(
 
     const zonesResponse = await cloudflare.zones.browse();
     const zone = cloudflareResultByName(zonesResponse, cloudflareZone);
+    console.log('Got the zone');
 
     const dnsRecordsResponse = await cloudflare.dnsRecords.browse(zone.id);
     const dnsRecord = cloudflareResultByName(dnsRecordsResponse, aRecord);
+    console.log('Got the dnsRecord');
 
     await cloudflare.dnsRecords.edit(zone.id, dnsRecord.id, {
         content: ipAddress,
@@ -57,4 +59,5 @@ export async function updateCloudflareDnsEntry(
         ttl: 1,
         type: dnsRecord.type,
     });
+    console.log('Updated the dnsRecord');
 }
